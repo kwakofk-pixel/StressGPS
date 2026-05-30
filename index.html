@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stress GPS</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Stress GPS</p>
+      <h1>대학생을 위한 스트레스 진단과 대처 안내</h1>
+      <p>스트레스 요인, 인지 평가, 일기, 그리고 7일 그래프를 한 곳에서 관리하세요.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="checklist-section">
+      <div class="section-header">
+        <h2>스트레스 요인 체크리스트</h2>
+        <p>최근에 부담을 느꼈던 항목을 선택해 주세요.</p>
+      </div>
+      <form id="stress-form">
+        <div class="grid-2">
+          <label><input type="checkbox" name="factor" value="exam" /> 시험</label>
+          <label><input type="checkbox" name="factor" value="assignment" /> 과제</label>
+          <label><input type="checkbox" name="factor" value="presentation" /> 발표</label>
+          <label><input type="checkbox" name="factor" value="relationships" /> 인간관계</label>
+          <label><input type="checkbox" name="factor" value="career" /> 취업</label>
+          <label><input type="checkbox" name="factor" value="finance" /> 경제적 문제</label>
+          <label><input type="checkbox" name="factor" value="sleep" /> 수면 부족</label>
+        </div>
+
+        <div class="survey-block">
+          <h3>인지적 평가</h3>
+          <div class="survey-options">
+            <label><input type="radio" name="appraisal" value="threat" checked /> 위협형</label>
+            <label><input type="radio" name="appraisal" value="challenge" /> 도전형</label>
+            <label><input type="radio" name="appraisal" value="avoidance" /> 회피형</label>
+          </div>
+        </div>
+
+        <button type="button" id="calculate-btn" class="button primary">스트레스 수준 보기</button>
+      </form>
+    </section>
+
+    <section class="card" id="result-section">
+      <div class="section-header">
+        <h2>분석 결과</h2>
+        <p>현재 상태와 맞춤형 대처법을 확인하세요.</p>
+      </div>
+      <div class="result-panel">
+        <p class="result-label">점수</p>
+        <p class="result-value" id="stress-score">0</p>
+        <p class="result-text" id="stress-level">선택 후 확인해 주세요.</p>
+      </div>
+      <div class="advice-grid">
+        <div>
+          <h3>스트레스 반응</h3>
+          <ul>
+            <li><strong>Fight or Flight</strong> : 위급 상황에서 신체 준비를 돕습니다.</li>
+            <li><strong>HPA Axis</strong> : 스트레스 호르몬 분비를 조절합니다.</li>
+            <li><strong>Cortisol</strong> : 장기간 높으면 피로와 불안이 커집니다.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>맞춤형 대처법</h3>
+          <ul>
+            <li>명상</li>
+            <li>운동</li>
+            <li>이완훈련</li>
+            <li>사회적 지지</li>
+            <li>재구성</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="diary-section">
+      <div class="section-header">
+        <h2>스트레스 일기</h2>
+        <p>오늘의 감정과 대처를 기록해 보세요.</p>
+      </div>
+      <form id="diary-form">
+        <textarea id="diary-text" rows="5" placeholder="오늘 느낀 스트레스와 대응을 기록해 보세요."></textarea>
+        <div class="diary-actions">
+          <button type="button" id="save-diary" class="button secondary">저장하기</button>
+          <button type="button" id="clear-diary" class="button tertiary">초기화</button>
+        </div>
+      </form>
+      <div class="saved-diary" id="saved-diary">
+        <h3>최근 저장된 일기</h3>
+        <p id="diary-message">아직 저장된 일기가 없습니다.</p>
+      </div>
+    </section>
+
+    <section class="card" id="graph-section">
+      <div class="section-header">
+        <h2>최근 7일 스트레스 그래프</h2>
+        <p>점수 변화와 패턴을 시각적으로 확인하세요.</p>
+      </div>
+      <div class="chart-card">
+        <canvas id="stress-chart" aria-label="최근 7일 스트레스 점수 그래프" role="img"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Stress GPS | 대학생 심리상담센터 스타일의 모던 스트레스 관리 앱</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
